@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "408402637481",
+    "project_id": "recipe-a23f0",
+    "storage_bucket": "recipe-a23f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408402637481:android:f6e03278f02b0c8c296fb8",
+        "android_client_info": {
+          "package_name": "com.example.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408402637481-vvadasu34s8sts6ke5snik8ujig523fi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASITaROCS9hIxWwprjkdpM5ttTtFJVeI4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408402637481-vvadasu34s8sts6ke5snik8ujig523fi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408402637481:android:c2638b8b6f2b0637296fb8",
+        "android_client_info": {
+          "package_name": "com.example.foodreceipt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408402637481-vvadasu34s8sts6ke5snik8ujig523fi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASITaROCS9hIxWwprjkdpM5ttTtFJVeI4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408402637481-vvadasu34s8sts6ke5snik8ujig523fi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408402637481:android:d90ea6bb2960a20f296fb8",
+        "android_client_info": {
+          "package_name": "com.example.foodrecipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408402637481-vvadasu34s8sts6ke5snik8ujig523fi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASITaROCS9hIxWwprjkdpM5ttTtFJVeI4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408402637481-vvadasu34s8sts6ke5snik8ujig523fi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408402637481:android:fd7d22dd4ac027a3296fb8",
+        "android_client_info": {
+          "package_name": "com.example.recipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408402637481-vvadasu34s8sts6ke5snik8ujig523fi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASITaROCS9hIxWwprjkdpM5ttTtFJVeI4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408402637481-vvadasu34s8sts6ke5snik8ujig523fi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

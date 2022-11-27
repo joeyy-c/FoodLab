@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">FoodRecipe</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="title_saved">Saved</string>
+    <string name="title_addrecipe">Create Recipe</string>
+    <string name="title_mypost">My Post</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="label_recipe_title">Title</string>
+    <string name="label_recipe_description">Description</string>
+    <string name="label_recipe_name">Recipe Name</string>
+    <string name="label_recipe_ingredients">Ingredients</string>
+    <string name="label_recipe_steps">Steps</string>
+    <string name="label_recipe_time">Time</string>
+    <string name="label_recipe_step_description">Step Description</string>
+    <string name="label_btn_publish_recipe">Publish</string>
+
+    <string-array name="recipe_category">
+        <item>Asian</item>
+        <item>Beverages</item>
+        <item>Dessert</item>
+        <item>Thai</item>
+        <item>Western</item>
+    </string-array>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_recipedetails">Recipe Details</string>
+    <string name="label_ingredients_title">Ingredients</string>
+    <string name="label_start_to_cook">Start to Cook</string>
+    <string name="label_icon_save">Save</string>
+    <string name="label_icon_comment">Comment</string>
+    <string name="label_icon_share">Share</string>
+    <string name="label_btn_upload_image">Upload Image</string>
+    <string name="label_btn_update_recipe">Update Recipe</string>
+    <string name="dialog_dlt_recipe">Delete</string>
+    <string name="dialog_cancel">Cancel</string>
+</resources>
