@@ -185,23 +185,5 @@
             android:visibility="gone"
             android:text="@string/label_btn_update_recipe" />
 
-        <Button
-            android:id="@+id/btnMyPost"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="my post" />
-
-        <Button
-            android:id="@+id/btnJowynRecipeDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="jowyn self recipe details" />
-
-        <Button
-            android:id="@+id/btnWjRecipeDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="wj others recipe details" />
-
     </LinearLayout>
 </ScrollView>

@@ -17,6 +17,18 @@
     <string name="label_recipe_time">Time</string>
     <string name="label_recipe_step_description">Step Description</string>
     <string name="label_btn_publish_recipe">Publish</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="log_out">Log Out</string>
+    <string name="update_account">Update Account</string>
+    <string name="sign_up_text">Already have an account? Sign In</string>
+    <string name="sign_up2">Please complete your biodata correctly</string>
+    <string name="sign_up1">Sign Up</string>
+    <string name="welcome">Welcome!</string>
+    <string name="login_text1">To continue using this app, please sign in first.</string>
+    <string name="login_text2">Don\'t have an account? Sign Up</string>
+
+    <string name="title_rating">Choose a Rating for this recipe</string>
+    <string name="title_review">Leave a Review</string>
 
     <string-array name="recipe_category">
         <item>Asian</item>
@@ -25,7 +37,7 @@
         <item>Thai</item>
         <item>Western</item>
     </string-array>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_recipedetails">Recipe Details</string>
     <string name="label_ingredients_title">Ingredients</string>
@@ -37,4 +49,6 @@
     <string name="label_btn_update_recipe">Update Recipe</string>
     <string name="dialog_dlt_recipe">Delete</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="popup_step_information">Click on the plus icon below the steps to add a new step. \n\nFill in the step description and time in minutes.</string>
+
 </resources>

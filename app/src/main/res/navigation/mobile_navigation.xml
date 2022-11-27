@@ -9,7 +9,12 @@
         android:id="@+id/navigation_home"
         android:name="com.example.foodrecipe.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_recipe_details"
+            app:destination="@id/navigation_recipedetails" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_saved"
@@ -42,6 +47,28 @@
         android:name="com.example.foodrecipe.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigation_StepActivity"
+        android:name="com.example.foodrecipe.ui.step.StepActivityFragment"
+        android:label="Step"
+        tools:layout="@layout/activity_step_fragment" />
+
+
+    <fragment
+        android:id="@+id/navigation_showReview"
+        android:name="com.example.foodrecipe.ui.review.ReviewActivityFragment"
+        android:label="AddReview"
+        tools:layout="@layout/activity_review_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_AddReview"
+        android:name="com.example.foodrecipe.ui.review.AddReviewFragment"
+        android:label="AddReview"
+        tools:layout="@layout/activity_add_review_fragment">
+        <action
+            android:id="@+id/action_addReview_to_review"
+            app:destination="@id/navigation_showReview" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_recipedetails"
@@ -52,5 +79,14 @@
         <action
             android:id="@+id/action_recipedetails_to_addrecipe"
             app:destination="@id/navigation_addrecipe" />
+        <action
+            android:id="@+id/action_recipedetails_to_step"
+            app:destination="@id/navigation_StepActivity" />
+        <action
+            android:id="@+id/action_recipedetails_to_review"
+            app:destination="@id/navigation_AddReview" />
     </fragment>
+
+
+
 </navigation>

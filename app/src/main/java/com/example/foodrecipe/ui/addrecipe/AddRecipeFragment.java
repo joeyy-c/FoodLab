@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -98,7 +99,7 @@ public class AddRecipeFragment extends Fragment {
     private EditText mEtRecipeTime;
     private EditText mEtRecipeIngredients;
     private Uri imageUri;
-    private String recipe_id;
+    private String recipe_id, user_id;
     private ProgressDialog progressdialog;
 
     FirebaseFirestore db;
@@ -147,6 +148,10 @@ public class AddRecipeFragment extends Fragment {
         storage = FirebaseStorage.getInstance();
         progressdialog = new ProgressDialog(getActivity());
 
+        // get user id by shared preferences
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("user_id", Context.MODE_PRIVATE);
+        user_id = sharedPreferences.getString("user_id", "");
+
         // recipe category
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 getActivity().getBaseContext(),
@@ -160,7 +165,7 @@ public class AddRecipeFragment extends Fragment {
         mBtnUploadRecipeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mGetContent.launch("image/*");
+                mGetContent.launch("image/jpg");
             }
         });
 
@@ -192,7 +197,7 @@ public class AddRecipeFragment extends Fragment {
                 layout.setLayoutParams(lp);
 
                 // set text of info
-                tv.setText("Click on the plus icon below the steps to add a new step. \n\nFill in the step description and time in minutes.");
+                tv.setText(getResources().getString(R.string.popup_step_information));
                 tv.setTextColor(getResources().getColor(R.color.black));
                 tv.setPadding(0,0,0,dpToPx(40));
 
@@ -235,45 +240,6 @@ public class AddRecipeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 updateRecipe();
-            }
-        });
-
-        getView().findViewById(R.id.btnMyPost).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Fragment fragment = new MyPostFragment();
-//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.navigation_addrecipe, fragment);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
-
-                Bundle bundle = new Bundle();
-                bundle.putString("recipe_id", "123");
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.action_addrecipe_to_mypost, bundle);
-            }
-        });
-
-        getView().findViewById(R.id.btnJowynRecipeDetails).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Bundle bundle = new Bundle();
-                bundle.putString("recipe_id", "7IvhCQRQzSpBTVPC6sro");
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.action_addrecipe_to_recipedetails, bundle);
-            }
-        });
-
-        getView().findViewById(R.id.btnWjRecipeDetails).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Bundle bundle = new Bundle();
-                bundle.putString("recipe_id", "NISPcUJNrSFlYity0s5y");
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.action_addrecipe_to_recipedetails, bundle);
             }
         });
     }
@@ -351,8 +317,7 @@ public class AddRecipeFragment extends Fragment {
             return;
 
         Map<String, Object> recipe = new HashMap<>();
-        recipe.put("user_id", "FRwgYsXhJNPx6rL6ZzKnaq3APbI3"); // jowyn id
-//        recipe.put("user_id", "bs4k9NoVopfGlKwWNhuSvztNOEI2"); // wj id
+        recipe.put("user_id", user_id);
         recipe.put("category", mSpRecipeCategory.getSelectedItem().toString());
         recipe.put("description", mEtRecipeDesc.getText().toString());
         recipe.put("ingredients", mEtRecipeIngredients.getText().toString());
@@ -403,7 +368,7 @@ public class AddRecipeFragment extends Fragment {
         progressdialog.setMessage("Updating recipe ...");
         progressdialog.show();
 
-        // insert recipe in firestore
+        // update recipe in firestore
         db.collection("recipe").document(recipe_id)
                 .set(recipe)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -427,8 +392,7 @@ public class AddRecipeFragment extends Fragment {
             return;
 
         Map<String, Object> recipe = new HashMap<>();
-        recipe.put("user_id", "FRwgYsXhJNPx6rL6ZzKnaq3APbI3"); // jowyn id
-//        recipe.put("user_id", "bs4k9NoVopfGlKwWNhuSvztNOEI2"); // wj id
+        recipe.put("user_id", user_id);
         recipe.put("category", mSpRecipeCategory.getSelectedItem().toString());
         recipe.put("description", mEtRecipeDesc.getText().toString());
         recipe.put("ingredients", mEtRecipeIngredients.getText().toString());
@@ -479,6 +443,11 @@ public class AddRecipeFragment extends Fragment {
                                 public void onSuccess(Void unused) {
                                     progressdialog.dismiss();
                                     Toast.makeText(getActivity(), "Recipe has been successfully published.", Toast.LENGTH_LONG).show();
+
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("recipe_id", document_id);
+                                    NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
+                                    navController.navigate(R.id.action_addrecipe_to_recipedetails, bundle);
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {

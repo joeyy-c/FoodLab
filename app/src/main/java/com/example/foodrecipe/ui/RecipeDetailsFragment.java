@@ -2,8 +2,10 @@ package com.example.foodrecipe.ui;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -61,6 +63,7 @@ public class RecipeDetailsFragment extends Fragment {
     private String recipe_id, user_id, recipe_user_id;
     private ProgressDialog progressdialog;
 
+
     public static RecipeDetailsFragment newInstance() {
         return new RecipeDetailsFragment();
     }
@@ -87,30 +90,20 @@ public class RecipeDetailsFragment extends Fragment {
         mIbDeleteRecipe = getView().findViewById(R.id.ibDeleteRecipe);
         mIbSaveRecipe = getView().findViewById(R.id.ibSaveRecipe);
         mIbShareRecipe = getView().findViewById(R.id.ibShareRecipe);
+
         db = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
         progressdialog = new ProgressDialog(getActivity());
 
         recipe_id = getArguments().getString("recipe_id");
-        user_id = "FRwgYsXhJNPx6rL6ZzKnaq3APbI3"; // jowyn id
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("user_id", Context.MODE_PRIVATE);
+        user_id = sharedPreferences.getString("user_id", "");
 
         showRecipe();
 
         mIbDuplicateRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                BottomNavigationView bottomNavigationView= getView().findViewById(R.id.nav_view);
-////                bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
-////                View vieww = bottomNavigationView.findViewById(R.id.navigation_profile);
-////                vieww.performClick();
-//                bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-//                    @Override
-//                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                        bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
-//                        return false;
-//                    }
-//                });
-
                 Bundle bundle = new Bundle();
                 bundle.putString("recipe_id", recipe_id);
                 bundle.putString("action", "duplicate");
@@ -175,12 +168,29 @@ public class RecipeDetailsFragment extends Fragment {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-//                intent.setPackage("com.whatsapp");
                 intent.putExtra(Intent.EXTRA_TEXT, share_content);
                 startActivity(Intent.createChooser(intent, "Share"));
             }
         });
+        getView().findViewById(R.id.btnStartToCook).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("recipe_id", recipe_id);
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
+                navController.navigate(R.id.action_recipedetails_to_step, bundle);
+            }
+        });
 
+        getView().findViewById(R.id.btnComment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("recipe_id", recipe_id);
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
+                navController.navigate(R.id.action_recipedetails_to_review, bundle);
+            }
+        });
     }
 
     public void deleteRecipe() {
